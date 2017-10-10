@@ -7,6 +7,11 @@
 #include"DeviceManager.h"
 #include"InputController.h"
 
+
+//Deadline
+#include"AladdinCharacter.h"
+#include"SurfaceManager.h"
+
 GAME_FRAMEWORK
 GAME_FRAMEWORK_BEGIN
 
@@ -34,6 +39,14 @@ public:
 	static  bool		isExit;
 	static  int		    isFullScreen;
 	static  Graphics*   getWindow();
+
+	///Deadline
+
+	AladdinCharacter* _Aladdin;
+	vector<Sprite*>			_listSpriteRun1;
+	D3DXVECTOR3				_LastLocation;			//Lưu lại vị trí cuối cùng của một hành động
+	STATE			        _State;
+	SurfaceManager*          _Map;
 protected:	
 	pGameTime			_gameTime;            //Quản lí time	
 	pDeviceManager		_deviceManager;       //Thiết bị xuất, surface

@@ -17,12 +17,23 @@
 #include <map>
 #include <vector>
 
-enum eStateAladdin
+enum eStateAllOfCharacter
 {
 	WALK,
-	JUMP
+	JUMP,
+	NORMAL
 };
 
+enum eIDCharacter
+{
+	ALADDIN
+};
+
+enum								DIRECTION { UP, DOWN, LEFT, RIGHT, NONE };
+enum								STATE { WALK, CLIMB, SWING, DROP };
+
+typedef D3DXVECTOR3 Vector3;
+typedef D3DXVECTOR2 Vector2;
 //enum StateGame
 //{	
 //	Alive,
