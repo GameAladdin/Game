@@ -20,6 +20,7 @@ void AladdinGame::Release()
 
 void AladdinGame::UpdateInput(float deltatime)
 {
+	/*if(InputController::getInstance()->isKeyDown())*/
 }
 
 void AladdinGame::Update(float deltatime)
