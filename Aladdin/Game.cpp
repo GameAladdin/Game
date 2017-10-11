@@ -1,5 +1,5 @@
 ﻿#include "Game.h"
-#include"AladdinCharacter.h"
+
 USEGAME_FRAMEWORK
 using namespace std;
 
@@ -39,14 +39,6 @@ void Game::InIt()
 
 	_oldTime = _gameTime->getTotalGameTime();
 	_deltaTime = 0.0f;
-
-
-
-
-	this->_Aladdin = new AladdinCharacter(D3DXVECTOR3(50, 500, 0));
-	this->_LastLocation = D3DXVECTOR3(50, 500, 0);
-	this->_State = WALK;
-	this->_Map = new SurfaceManager("Map\\Map1.png");
 }
 
 
@@ -133,62 +125,6 @@ void Game::Run()
 			}
 			_deviceManager->getDevice()->Present(NULL, NULL, NULL, NULL);*/
             #pragma endregion
-
-			//DEALINE
-			if (_deviceManager->getDevice()->BeginScene())
-			{
-				_spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
-				_deviceManager->getDevice()->ColorFill(
-				_deviceManager->getSurface(),
-					NULL,
-					D3DCOLOR_XRGB(0, 0, 0));
-
-				this->_Map->Render(NULL, NULL);
-
-				switch (this->_State)
-				{
-				case SWING:
-				{
-					_Aladdin->Activities(SWING, LEFT);
-					if (this->_Aladdin->GetCurrentLocation().x <= 50)
-					{
-						this->_State = DROP;
-						this->_Aladdin->SetSpeed(10);
-					}
-					break;
-				}
-				case DROP:
-				{
-					this->_Aladdin->SetEndLocation(D3DXVECTOR3(this->_LastLocation.x, 500, 0));
-					this->_Aladdin->Activities(DROP, RIGHT);
-					if (this->_Aladdin->GetCurrentLocation().y >= this->_Aladdin->GetEndLocation().y)
-					{
-						this->_State = STATE::WALK;
-					}
-					break;
-				}
-				case WALK:
-				{
-					this->_Aladdin->Activities(STATE::WALK, RIGHT);
-					if (this->_Aladdin->GetCurrentLocation().x >= 934)
-						this->_State = CLIMB;
-					break;
-				}
-				case CLIMB:
-				{
-					this->_Aladdin->Activities(CLIMB, UP);
-					if (this->_Aladdin->GetCurrentLocation().y <= 100)
-						this->_State = SWING;
-					break;
-				}
-				}
-
-
-				_spriteHandler->End();
-				_deviceManager->getDevice()->EndScene();
-			}
-			_deviceManager->getDevice()->Present(NULL, NULL, NULL, NULL);
-
 		}
 		else
 			Sleep(_frameRate - _deltaTime);						//sleep every frame for high performance		

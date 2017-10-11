@@ -124,12 +124,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AladdinAction.cpp" />
     <ClCompile Include="AladdinCharacter.cpp" />
-    <ClCompile Include="AladdinClimb.cpp" />
-    <ClCompile Include="AladdinDrop.cpp" />
-    <ClCompile Include="AladdinSwing.cpp" />
-    <ClCompile Include="AladdinWalk.cpp" />
     <ClCompile Include="define.h" />
     <ClCompile Include="DeviceManager.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -140,18 +135,10 @@
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="InputController.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ObjectBase.cpp" />
-    <ClCompile Include="Sprite.cpp" />
-    <ClCompile Include="SurfaceManager.cpp" />
     <ClCompile Include="TimeSpan.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AladdinAction.h" />
     <ClInclude Include="AladdinCharacter.h" />
-    <ClInclude Include="AladdinClimb.h" />
-    <ClInclude Include="AladdinDrop.h" />
-    <ClInclude Include="AladdinSwing.h" />
-    <ClInclude Include="AladdinWalk.h" />
     <ClInclude Include="DeviceManager.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="AladdinGame.h" />
@@ -160,9 +147,6 @@
     <ClInclude Include="GameTime.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="InputController.h" />
-    <ClInclude Include="ObjectBase.h" />
-    <ClInclude Include="Sprite.h" />
-    <ClInclude Include="SurfaceManager.h" />
     <ClInclude Include="TimeSpan.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
