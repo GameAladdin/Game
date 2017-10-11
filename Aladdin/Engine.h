@@ -20,6 +20,10 @@ public:
 	static int GetCurrentFrame() { return Engine::_currentFrame; }
 	static void SetCurrentFrame(int currentFrame) 
 	{ Engine::_currentFrame = (_currentFrame >= NUMBEROFSPRITE) ? 1 : ++_currentFrame; }
+	static enum								DIRECTION { UP, DOWN, LEFT, RIGHT, NONE };
+	static enum								STATE { WALK, CLIMB, SWING, DROP };
+	static	LPD3DXSPRITE					GetSpriteHandler() { return Engine::_spriteHandler; }
+	static	void							SetSpriteHandler(LPD3DXSPRITE spriteHandler) { Engine::_spriteHandler = spriteHandler; }
 
 	Engine();
 	~Engine();

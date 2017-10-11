@@ -3,6 +3,7 @@
 #define _GameALADDIN_H
 #include"Engine.h"
 #include"Game.h"
+#include"AladdinCharacter.h"
 
 using namespace std;
 USEGAME_FRAMEWORK
@@ -21,6 +22,7 @@ public:
 	void	Update(float deltatime);       //override update your object
 	void	Draw();                        //Draw your Object
 	void	LoadResourse();
+
 };
 #endif _GAMEALADDIN_H_
 

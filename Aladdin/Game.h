@@ -6,6 +6,8 @@
 #include"Graphics.h"
 #include"DeviceManager.h"
 #include"InputController.h"
+#include"SPRITE.h"
+#include"AladdinCharacter.h"
 
 GAME_FRAMEWORK
 GAME_FRAMEWORK_BEGIN
@@ -34,12 +36,20 @@ public:
 	static  bool		isExit;
 	static  int		    isFullScreen;
 	static  Graphics*   getWindow();
+
+	//Deadline
+	void Update();
+
 protected:	
 	pGameTime			_gameTime;            //Quản lí time	
 	pDeviceManager		_deviceManager;       //Thiết bị xuất, surface
 	pInputController    _input;               //Quản lí các nút bấm
 	LPD3DXSPRITE		_spriteHandler;    
 	static Graphics*	_graphics;            //Dùng khởi tạo Window and pointer window hwnd
+	Engine::STATE			mState;
+	vector<SPRITE*>			_listSpriteRun1;
+	ALADDIN*				mAladdin;
+	D3DXVECTOR3				mLastLocation;			//Lưu lại vị trí cuối cùng của một hành động
 private:
 	float		        _frameRate;				  // time for 1 frame, milisecond
 	float			    _oldTime;

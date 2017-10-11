@@ -10,6 +10,7 @@ AladdinGame::~AladdinGame()
 void AladdinGame::InIt()
 {
 	Game::InIt();
+
 }
 
 void AladdinGame::Release()

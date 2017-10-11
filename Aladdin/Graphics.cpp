@@ -70,8 +70,6 @@ bool Graphics::InItWindow()
 			MessageBox(NULL, TEXT("Create window error"), "Aladdin", MB_ICONERROR);
 			return false;
 		}
-		MessageBox(this->_hWnd, TEXT("Create window error"), "Aladdin", MB_ICONERROR);
-
 		ShowWindow(this->_hWnd, SW_SHOWNORMAL);
 		UpdateWindow(this->_hWnd);
 		return true;

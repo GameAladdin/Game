@@ -8,11 +8,15 @@ DeviceManager::DeviceManager(void)
 	_direct = NULL;
 	_directDevice = NULL;
 	_surface = NULL;
+	_transcolor = D3DCOLOR_XRGB(0, 0, 0);
 }
 
-bool DeviceManager::Init(pGraphics window)
+bool DeviceManager::Init(pGraphics window, char * filePathMap)
 {
-	_direct = Direct3DCreate9(D3D_SDK_VERSION);
+	_FileName = filePathMap;
+
+	_direct = Direct3DCreate9(D3D_SDK_VERSION);	
+
 	if (_direct == NULL)
 	{
 		MessageBox(NULL, TEXT("Device direct can't create"), "Aladdin", MB_ICONERROR);
@@ -45,6 +49,24 @@ bool DeviceManager::Init(pGraphics window)
 	//Initilize Surface
 	_directDevice->GetBackBuffer(NULL, NULL, D3DBACKBUFFER_TYPE_MONO, &_surface);
 
+	LoadResoureMap();
+
+}
+
+void DeviceManager::RenderMap(const RECT * sourceRect, const RECT * desRect)
+{
+	IDirect3DSurface9* backbuffer = NULL;
+	_directDevice->GetBackBuffer(0,
+		0,
+		D3DBACKBUFFER_TYPE_MONO,
+		&backbuffer);
+
+	_directDevice->StretchRect(
+		_surface,
+		sourceRect,
+		backbuffer,
+		desRect,
+		D3DTEXF_NONE);	
 }
 
 DeviceManager* DeviceManager::getInstance()
@@ -72,7 +94,7 @@ void DeviceManager::Release()
 
 void DeviceManager::Present()
 {
-	this->_directDevice->Present(0, 0, 0, 0);
+	this->_directDevice->Present(NULL,NULL,NULL,NULL);
 }
 
 
@@ -94,4 +116,37 @@ LPDIRECT3DDEVICE9 DeviceManager::getDevice()
 LPDIRECT3DSURFACE9 DeviceManager::getSurface()
 {
 	return _surface;
+}
+
+void DeviceManager::LoadResoureMap()
+{
+	D3DXIMAGE_INFO info;
+	if (D3DXGetImageInfoFromFile(this->_FileName, &info))
+	{
+		MessageBox(NULL, "Can't load resource", "Error", MB_OK);
+		return;
+	}
+
+	_directDevice->CreateOffscreenPlainSurface(
+		info.Width,
+		info.Height,
+		D3DFMT_X8R8G8B8,
+		D3DPOOL_DEFAULT,
+		&_surface,
+		NULL);
+
+	if (
+		D3DXLoadSurfaceFromFile(
+			this->_surface,
+			NULL,
+			NULL,
+			this->_FileName,
+			NULL,
+			D3DX_DEFAULT,
+			D3DCOLOR_XRGB(0, 0, 0),
+			&info) != D3D_OK)
+	{
+		MessageBox(NULL, "Can't load resource", "Error", MB_OK);
+		return;
+	}
 }

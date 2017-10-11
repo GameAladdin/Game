@@ -29,6 +29,7 @@ enum eStateAladdin
 //	Pause,
 //	Resume
 //};
+
 #define GAME_FRAMEWORK		    namespace FrameWork
 
 #define GAME_FRAMEWORK_BEGIN	{
