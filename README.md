@@ -1,2 +1,2 @@
 # Game
-Code game by Duc Tien, Duc Anh and Nguyen Quoc
+Deadline: Biểu diễn một vài hành động của aladdin
