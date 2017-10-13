@@ -1,7 +1,7 @@
 ﻿#pragma once
 #ifndef __ALADDINACTION_H__
 #define __ALADDINACTION_H__
-#include"SPRITE.h"
+#include"Sprite.h"
 #include"Engine.h"
 USEGAME_FRAMEWORK
 

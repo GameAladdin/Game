@@ -26,7 +26,7 @@ enum eStateAllOfCharacter
 
 enum eIDCharacter
 {
-	ALADDIN
+	//ALADDIN
 };
 
 typedef D3DXVECTOR3 Vector3;

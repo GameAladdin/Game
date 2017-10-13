@@ -5,8 +5,9 @@
 #include"AladdinAction.h"
 #include"AladdinCharacter.h"
 #include"define.h"
-USEGAME_FRAMEWORK
 #define COUNT_FRAME 19
+USEGAME_FRAMEWORK
+
 //Thể hiện hành động nhảy xuống của Aladdin
 class AladdinDrop :public AladdinAction
 {
